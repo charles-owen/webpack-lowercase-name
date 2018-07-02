@@ -1,0 +1,17 @@
+{
+  "name": "webpack-lowercase-name",
+  "version": "1.0.0",
+  "description": "Adds the template option [lc-name] that will substitute a lower-case name",
+  "main": "./LowerCaseNamePlugin.js",
+  "private": false,
+  "scripts": {},
+  "keywords": [
+    "webpack",
+    "templates"
+  ],
+  "author": "Charles B. Owen",
+  "license": "MIT",
+  "devDependencies": {},
+  "dependencies": {},
+  "repository": "https://github.com/charles-owen/webpack-lowercase-name.git"
+}
