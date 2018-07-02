@@ -1,6 +1,6 @@
 {
   "name": "webpack-lowercase-name",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Adds the template option [lc-name] that will substitute a lower-case name",
   "main": "./LowerCaseNamePlugin.js",
   "private": false,
