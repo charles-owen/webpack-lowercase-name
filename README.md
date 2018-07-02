@@ -53,7 +53,7 @@ Now the exported global variables will be Console and Site and the files console
 
 ## Utilizing
 
-Require the plugin in webpack.common.js:
+Require the plugin in webpack.config.js:
 
 ``` javascript 
 const LowerCaseNamePlugin = require('webpack-lowercase-name');
@@ -65,6 +65,43 @@ And add to the list of plugins:
     plugins: [
         new LowerCaseNamePlugin()
     ],
+```
+
+## An Issue with splitChunks
+
+If utilized with splitChunks, the generated filename may not be as expected. For example, suppose we apply the above
+example and this splitChunks configuration to create a vendor chunk:
+
+``` javascript
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                commons: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'vendor',
+                    chunks: 'all'
+                }
+            }
+        }
+    },
+```
+
+The generated output file will be vendor.vendor.js. The reason is that splitChunks will look at the generated
+filename and ensure it will be unique if more than one chunk is generated. The code tests to ensure
+either [id] or [name] are present. If neither is present, it prefixes [id]. to the filename, creating 
+[id].[lc-name].js, which creates the file vendor.vendor.js. The fix for this problem is to specify the 
+name for chunked files separately using [name] instead of [lc-name]:
+
+``` javascript
+    output: {
+        filename: '[lc-name].js',
+        chunkFilename: '[name].js',
+        path: path.resolve(__dirname, 'dist'),
+        library: '[name]',
+        libraryTarget: 'umd',
+        libraryExport: "default",
+        publicPath: ''
+    },
 ```
 
 ## License
