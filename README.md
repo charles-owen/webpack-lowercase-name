@@ -2,8 +2,8 @@
 
 _Adds the template option [lc-name] that will substitute a lower-case name_
 
-Notice: It is recommended that the plugin webpack-chunk-renamer-plugin be used instead of this one.
-It does everything this does and then some and I'll likely not continue to maintain that plugin
+Notice: It is recommended that the plugin _webpack-chunk-renamer-plugin_ be used instead of this one.
+It does everything this does and then some and I'll likely not continue to maintain this plugin
 in the future.
 
 I prefer to have my exported JavaScript objects start with an upper-case letter, but I like
